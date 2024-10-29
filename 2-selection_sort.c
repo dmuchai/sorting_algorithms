@@ -3,17 +3,17 @@
  * selection_sort - Sorts an array of integers in ascending order
  * using the Selection sort algorithm
  * @array: Array of integers to sort
- * @size_arr: Size of the array
+ * @size: Size of the array
  */
-void selection_sort(int *array, size_t size_arr)
+void selection_sort(int *array, size_t size)
 {
 	size_t i, j;
 	int min, tmp, idx;
 
-	for (i = 0; i < size_arr; i++)
+	for (i = 0; i < size; i++)
 	{
 		min = array[i];
-		for (j = i + 1; j < size_arr; j++)
+		for (j = i + 1; j < size; j++)
 		{
 			if (min > array[j])
 			{
@@ -26,7 +26,8 @@ void selection_sort(int *array, size_t size_arr)
 			tmp = array[i];
 			array[i] = min;
 			array[idx] = tmp;
-			print_array(array, size_arr);
+			print_array(array, size);
 		}
 	}
 }
+
