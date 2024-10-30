@@ -6,8 +6,12 @@
  */
 void shell_sort(int *array, size_t size)
 {
-	size_t gap = 1;
-	size_t i, j;
+	size_t gap, i, j;
+
+	if (!array || size < 2)
+	return;
+
+	gap = 1;
 
 	while (gap < size / 3)
 	gap = gap * 3 + 1;
