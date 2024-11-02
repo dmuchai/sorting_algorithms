@@ -1,9 +1,9 @@
 #include "sort.h"
 /**
  * get_max - gets max value from array
- * @arr: pointer to array
+ * @arr: pointer to array of integers
  * @n: size of the array
- * Return: max value from array
+ * Return: max value in the array array
  */
 int get_max(int *arr, size_t n)
 {
@@ -18,16 +18,15 @@ int get_max(int *arr, size_t n)
 	return (mx);
 }
 /**
- * radix_sort - sorts an array of integers is ASC
- * order implementing Radix Sort algorithm
- * @array: pointer to array
+ * radix_sort - sorts an array of integers using Radix sort algorithm.
+ * @array: pointer to array to sort
  * @size: size of the array
  */
 void radix_sort(int *array, size_t size)
 {
 	int *new_arr;
 	int i, max, e = 1;
-	int tam = size;
+	int t = size;
 
 	if (!array || size < 2)
 		return;
@@ -37,28 +36,28 @@ void radix_sort(int *array, size_t size)
 	new_arr = malloc(sizeof(int) * size);
 	while (max / e > 0)
 	{
-		int brews[20] = {0};
+		int count[20] = {0};
 
 		i = 0;
 
-		while (i < tam)
+		while (i < t)
 		{
-			brews[(array[i] / e) % 10]++;
+			count[(array[i] / e) % 10]++;
 			i++;
 		}
 
-		if (brews != NULL)
+		if (count != NULL)
 		{
 			for (i = 1; i < 10; i++)
-				brews[i] += brews[i - 1];
+				count[i] += count[i - 1];
 
-			for (i = tam - 1; i >= 0; i--)
+			for (i = t - 1; i >= 0; i--)
 			{
-				new_arr[brews[(array[i] / e) % 10] - 1] = array[i];
-				brews[(array[i] / e) % 10]--;
+				new_arr[count[(array[i] / e) % 10] - 1] = array[i];
+				count[(array[i] / e) % 10]--;
 			}
 
-			for (i = 0; i < tam; i++)
+			for (i = 0; i < t; i++)
 				array[i] = new_arr[i];
 		}
 		e *= 10;
