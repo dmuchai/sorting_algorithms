@@ -1,8 +1,8 @@
 #include "sort.h"
 /**
  * get_max - gets max value from array
- * @array: pointer to array
- * @size: size of the array
+ * @arr: pointer to array
+ * @n: size of the array
  * Return: max value from array
  */
 int get_max(int *arr, size_t n)
