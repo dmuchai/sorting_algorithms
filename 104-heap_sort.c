@@ -10,27 +10,27 @@
 void sift_down(int *array, size_t size_init, size_t size, size_t i)
 {
 
-	int temp, branch1, branch2;
+	int temp, br1, br2;
 	size_t left, right;
 
 	left = i * 2 + 1;
 	right = left + 1;
-	branch1 = array[left];
-	branch2 = array[right];
+	br1 = array[left];
+	br2 = array[right];
 	if (((left < size) && (right < size) &&
-		(branch1 >= branch2 && branch1 > array[i]))
-		|| ((left == size - 1) && branch1 > array[i]))
+		(br1 >= br2 && br1 > array[i]))
+		|| ((left == size - 1) && br1 > array[i]))
 	{
 		temp = array[i];
-		array[i] = branch1;
+		array[i] = br1;
 		array[left] = temp;
 		print_array(array, size_init);
 	}
 	else if ((left < size) && (right < size) &&
-		(branch2 > branch1 && branch2 > array[i]))
+		(br2 > br1 && br2 > array[i]))
 	{
 		temp = array[i];
-		array[i] = branch2;
+		array[i] = br2;
 		array[right] = temp;
 		print_array(array, size_init);
 	}
