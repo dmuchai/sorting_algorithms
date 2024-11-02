@@ -10,7 +10,7 @@ int get_max(int *arr, size_t n)
 	int mx = arr[0];
 	size_t i;
 
-	for (i = 0; i < size; i++)
+	for (i = 0; i < n; i++)
 	{
 		if (arr[i] > mx)
 			mx = arr[i];
@@ -32,7 +32,7 @@ void radix_sort(int *array, size_t size)
 	if (!array || size < 2)
 		return;
 
-	max = max_val(array, size);
+	max = get_max(array, size);
 
 	new_arr = malloc(sizeof(int) * size);
 	while (max / e > 0)
