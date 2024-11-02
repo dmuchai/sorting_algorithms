@@ -2,42 +2,42 @@
 /**
  * counting_sort - sorts an array of integers in ascending
  * order using the Counting sort algorithm
- * @array: pointer to array
- * @size: size of the array
+ * @array: pointer to the array to be sorted
+ * @size: number of elements in the array
  **/
 void counting_sort(int *array, size_t size)
 {
-	int n, j, *count_array, *aux;
-	size_t i;
+	int max, i, *count_array, *sorted_arr;
+	size_t index;
 
 	if (!array || size < 2)
 		return;
-	n = array[0];
-	for (i = 0; i < size; i++)
+	max = array[0];
+	for (index = 0; index < size; index++)
 	{
-		if (array[i] > n)
-			n = array[i];
+		if (array[index] > max)
+			max = array[index];
 	}
-	count_array = calloc((n + 1), sizeof(int));
-	for (i = 0; i < size; i++)
+	count_array = calloc((max + 1), sizeof(int));
+	for (index = 0; index < size; index++)
 	{
-		count_array[array[i]]++;
+		count_array[array[index]]++;
 	}
-	for (j = 1; j < n; j++)
+	for (i = 1; i < max; i++)
 	{
-		count_array[j + 1] += count_array[j];
+		count_array[i + 1] += count_array[i];
 	}
-	print_array(count_array, n + 1);
-	aux = malloc(sizeof(int) * size);
-	for (i = 0; i < size; i++)
+	print_array(count_array, max + 1);
+	sorted_arr = malloc(sizeof(int) * size);
+	for (index = 0; index < size; index++)
 	{
-		count_array[array[i]]--;
-		aux[count_array[array[i]]] = array[i];
+		count_array[array[index]]--;
+		sorted_arr[count_array[array[index]]] = array[index];
 	}
-	for (i = 0; i < size; i++)
+	for (index = 0; index < size; index++)
 	{
-		array[i] = aux[i];
+		array[index] = sorted_arr[index];
 	}
-	free(aux);
+	free(sorted_arr);
 	free(count_array);
 }
